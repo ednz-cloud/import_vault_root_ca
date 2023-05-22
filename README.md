@@ -11,7 +11,14 @@ None.
 
 Role Variables
 --------------
-Available variables are listed below, along with default values. A sample file for the default values is available in `default/hashicorp_nomad.yml.sample` in case you need it for any `group_vars` or `host_vars` configuration.
+Available variables are listed below, along with default values. A sample file for the default values is available in `default/import_vault_root_ca.yml.sample` in case you need it for any `group_vars` or `host_vars` configuration.
+
+```yaml
+import_vault_root_ca_certificate_list: {} # by default, set to an empty dict
+  - url: <someurl>
+    cert_name: <name_of_ca>
+```
+This variable defines which CA certificate to install on the machine, it is only tested with CA from Hashicorp Vault pki engine, but should work with any CA that can be downloaded from a webserver.
 
 Dependencies
 ------------
