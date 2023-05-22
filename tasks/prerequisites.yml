@@ -1,0 +1,23 @@
+---
+# task/prerequisites file for import_vault_root_ca
+- name: "Install required roles"
+  ansible.builtin.command:
+    cmd: "ansible-galaxy install {{ item }}"
+  loop: "{{ import_vault_root_ca_prerequisites_roles }}"
+  changed_when: false
+  delegate_to: localhost
+  run_once: true
+
+- name: "Install dependencies"
+  ansible.builtin.include_role:
+    name: ednxzu.manage_apt_packages
+  vars:
+    manage_apt_packages_list: "{{ import_vault_root_ca_packages }}"
+
+- name: "Create directory {{ import_vault_root_ca_cert_dir }}"
+  ansible.builtin.file:
+    path: "{{ import_vault_root_ca_cert_dir }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: '0755'

@@ -1,0 +1,17 @@
+---
+# task/import file for import_vault_root_ca
+- name: "Download certificate file"
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    validate_certs: false
+    dest: "/tmp/{{ item.cert_name }}.tmp"
+    mode: '0600'
+  loop: "{{ import_vault_root_ca_certificate_list }}"
+
+- name: "Make sure certificate is in PEM format"
+  ansible.builtin.command:
+    cmd: "openssl x509 -in /tmp/{{ item.cert_name }}.tmp -out {{ import_vault_root_ca_cert_dir }}/{{ item.cert_name }}.crt -outform pem"
+    creates: "{{ import_vault_root_ca_cert_dir }}/{{ item.cert_name }}.crt"
+  loop: "{{ import_vault_root_ca_certificate_list }}"
+  notify:
+    - update-ca-certificates

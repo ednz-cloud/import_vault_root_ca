@@ -1,2 +1,12 @@
 ---
 # vars file for import_vault_root_ca
+import_vault_root_ca_cert_dir: /usr/local/share/ca-certificates
+import_vault_root_ca_prerequisites_roles:
+  - ednxzu.manage_apt_packages
+import_vault_root_ca_packages:
+  - name: openssl
+    version: latest
+    state: present
+  - name: ca-certificates
+    version: latest
+    state: present

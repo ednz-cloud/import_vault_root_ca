@@ -1,2 +1,5 @@
 ---
 # handlers file for import_vault_root_ca
+- name: "Update the trust store"
+  ansible.builtin.command: update-ca-certificates
+  listen: "update-ca-certificates"
