@@ -1,0 +1,24 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: "Test: directory /usr/local/share/ca-certificates"
+      block:
+        - name: "Stat directory /usr/local/share/ca-certificates"
+          ansible.builtin.stat:
+            path: "/usr/local/share/ca-certificates"
+          register: usr_local_share_ca_certificates
+
+        - name: "Verify directory {{ import_vault_root_ca_cert_dir }}"
+          ansible.builtin.assert:
+            that:
+              - usr_local_share_ca_certificates.stat.exists
+              - usr_local_share_ca_certificates.stat.isdir
+              - usr_local_share_ca_certificates.stat.pw_name == 'root'
+              - usr_local_share_ca_certificates.stat.gr_name == 'root'
+              - usr_local_share_ca_certificates.stat.mode == '0755'
+
+    - name: "Get certificate information"
