@@ -4,6 +4,7 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     validate_certs: false
+    force: false
     dest: "/tmp/{{ item.cert_name }}.tmp"
     mode: '0600'
   loop: "{{ import_vault_root_ca_certificate_list }}"
@@ -15,3 +16,9 @@
   loop: "{{ import_vault_root_ca_certificate_list }}"
   notify:
     - update-ca-certificates
+
+- name: "Delete temporary certificate"
+  ansible.builtin.file:
+    path: "/tmp/{{ item.cert_name }}.tmp"
+    state: absent
+  loop: "{{ import_vault_root_ca_certificate_list }}"
