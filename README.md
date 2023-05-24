@@ -14,7 +14,12 @@ Role Variables
 Available variables are listed below, along with default values. A sample file for the default values is available in `default/import_vault_root_ca.yml.sample` in case you need it for any `group_vars` or `host_vars` configuration.
 
 ```yaml
-import_vault_root_ca_certificate_list: {} # by default, set to an empty dict
+import_vault_root_ca_certificate_force_download: false # by default, set to false
+```
+This variable defines whether the role should always download the provided certificate even if it already exists. This can be useful if you want to replace an existing CA, but note the **it breaks idempotence**.
+
+```yaml
+import_vault_root_ca_certificate_list: [] # by default, set to an empty dict
   - url: <someurl>
     cert_name: <name_of_ca>
 ```

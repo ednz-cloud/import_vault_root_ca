@@ -4,9 +4,9 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     validate_certs: false
-    force: false
-    dest: "/tmp/{{ item.cert_name }}.tmp"
-    mode: '0600'
+    force: "{{ import_vault_root_ca_certificate_force_download }}"
+    dest: "{{ import_vault_root_ca_cert_dir }}/{{ item.cert_name }}.crt"
+    mode: '0644'
   loop: "{{ import_vault_root_ca_certificate_list }}"
 
 - name: "Make sure certificate is in PEM format"
@@ -16,9 +16,3 @@
   loop: "{{ import_vault_root_ca_certificate_list }}"
   notify:
     - update-ca-certificates
-
-- name: "Delete temporary certificate"
-  ansible.builtin.file:
-    path: "/tmp/{{ item.cert_name }}.tmp"
-    state: absent
-  loop: "{{ import_vault_root_ca_certificate_list }}"
