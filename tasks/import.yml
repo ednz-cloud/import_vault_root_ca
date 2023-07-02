@@ -5,7 +5,7 @@
     url: "{{ item.url }}"
     validate_certs: false
     force: "{{ import_vault_root_ca_certificate_force_download }}"
-    dest: "{{ import_vault_root_ca_cert_dir }}/{{ item.cert_name }}.crt"
+    dest: "/tmp/{{ item.cert_name }}.tmp"
     mode: '0644'
   loop: "{{ import_vault_root_ca_certificate_list }}"
 
