@@ -16,7 +16,7 @@ Available variables are listed below, along with default values. A sample file f
 ```yaml
 import_vault_root_ca_certificate_force_download: false # by default, set to false
 ```
-This variable defines whether the role should always download the provided certificate even if it already exists. This can be useful if you want to replace an existing CA, but note the **it breaks idempotence**.
+This variable defines whether the role should always download the provided certificate even if it already exists. This can be useful if you want to replace an existing CA, but note that **it breaks idempotence**.
 
 ```yaml
 import_vault_root_ca_certificate_list: [] # by default, set to an empty dict
