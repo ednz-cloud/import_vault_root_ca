@@ -1,6 +1,6 @@
 import_vault_root_ca
 =========
-> This repository is only a mirror. Development and testing is done on a private gitlab server.
+> This repository is only a mirror. Development and testing is done on a private gitea server.
 
 This role imports root CA certificates from Vault to the trust store on **debian-based** distributions.
 
