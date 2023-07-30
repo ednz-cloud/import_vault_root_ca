@@ -28,7 +28,7 @@ This variable defines which CA certificate to install on the machine, it is only
 Dependencies
 ------------
 
-None.
+`ednxzu.manage_apt_packages` to install consul-template.
 
 Example Playbook
 ----------------
