@@ -3,5 +3,4 @@
 - name: "Update the trust store"
   ansible.builtin.command: update-ca-certificates
   changed_when: false
-  become: true
   listen: "update-ca-certificates"

@@ -23,6 +23,5 @@
     cmd: openssl x509 -inform {{ 'PEM' if item.rc == 0 else 'DER' }} -in {{ item.item.dest }} -out {{ import_vault_root_ca_cert_dir }}/{{ item.item.item.cert_name }}.crt -outform pem
     creates: "{{ import_vault_root_ca_cert_dir }}/{{ item.item.item.cert_name }}.crt"
   loop: "{{ cert_format_results.results }}"
-  become: true
   notify:
     - update-ca-certificates
