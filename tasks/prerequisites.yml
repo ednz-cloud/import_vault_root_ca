@@ -2,7 +2,7 @@
 # task/prerequisites file for import_vault_root_ca
 - name: "Install dependencies"
   ansible.builtin.include_role:
-    name: ednxzu.manage_apt_packages
+    name: ednz_cloud.manage_apt_packages
   vars:
     manage_apt_packages_list: "{{ import_vault_root_ca_packages }}"
 
@@ -12,4 +12,4 @@
     state: directory
     owner: "root"
     group: "root"
-    mode: '0755'
+    mode: "0755"

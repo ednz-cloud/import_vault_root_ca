@@ -28,7 +28,7 @@ This variable defines which CA certificate to install on the machine, it is only
 Dependencies
 ------------
 
-`ednxzu.manage_apt_packages` to install consul-template.
+`ednz_cloud.manage_apt_packages` to install consul-template.
 
 Example Playbook
 ----------------
@@ -37,7 +37,7 @@ Example Playbook
 # calling the role inside a playbook with either the default or group_vars/host_vars
 - hosts: servers
   roles:
-    - ednxzu.import_vault_root_ca
+    - ednz_cloud.import_vault_root_ca
 ```
 
 License

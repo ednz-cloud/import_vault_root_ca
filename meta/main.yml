@@ -1,12 +1,12 @@
 ---
 # meta file for hashicorp_nomad
 galaxy_info:
-  namespace: 'ednxzu'
-  role_name: 'import_vault_root_ca'
-  author: 'Bertrand Lanson'
-  description: 'Imports root CA certificates from Vault to the trust store on debian-based distros.'
-  license: 'license (BSD, MIT)'
-  min_ansible_version: '2.10'
+  namespace: "ednz_cloud"
+  role_name: "import_vault_root_ca"
+  author: "Bertrand Lanson"
+  description: "Imports root CA certificates from Vault to the trust store on debian-based distros."
+  license: "license (BSD, MIT)"
+  min_ansible_version: "2.10"
   platforms:
     - name: Ubuntu
       versions:
@@ -17,11 +17,11 @@ galaxy_info:
         - bullseye
         - bookworm
   galaxy_tags:
-    - 'ubuntu'
-    - 'debian'
-    - 'vault'
-    - 'openssl'
-    - 'store'
-    - 'certificate'
+    - "ubuntu"
+    - "debian"
+    - "vault"
+    - "openssl"
+    - "store"
+    - "certificate"
 
 dependencies: []
